@@ -1,3 +1,4 @@
+# using for loop
 def selection_sort(arr, size):
 
   for i in range (size):
@@ -10,6 +11,8 @@ def selection_sort(arr, size):
       arr[min_index], arr[i] = arr[i], arr[min_index]
   return
 
+
+# Using recursion
 def select_min_index(arr, start, stop, min_index):
   # base condition
   if start > stop:
@@ -18,21 +21,20 @@ def select_min_index(arr, start, stop, min_index):
   if arr[min_index] > arr[start]:
     min_index = start
 
-  min_index = select_min_index(arr, start+1, stop, min_index)
-  return min_index
+  return select_min_index(arr, start+1, stop, min_index)
+  
 
 def selection_sort_recursion(arr, start, stop):
   # base condition
   if start == stop:
-    return
+    return arr;
   
-  min_index = start
   min_index = select_min_index(arr, start+1, stop, min_index)
   if(min_index != start):
     arr[min_index], arr[start] = arr[start], arr[min_index]
     
-  selection_sort_recursion(arr, start+1, stop)
-  return
+  return selection_sort_recursion(arr, start+1, stop)
+  
 
 
 size = int(input("size: "));
