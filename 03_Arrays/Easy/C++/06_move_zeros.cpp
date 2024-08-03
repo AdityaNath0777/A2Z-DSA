@@ -50,6 +50,22 @@ void moveZeroes_Optimal(vector<int>& nums) {
     }
 }
 
+void moveZeroes_Optimal_2(vector<int>& nums){
+  // assume first element is zero
+  int j = 0;
+
+  // iterate over the array
+  for (int i = 0; i<nums.size(); ++i){
+
+    // if non-zero element found,
+      // swap it with the element at index j
+    if (nums[i] != 0 ){
+      mySwap(nums[i], nums[j]);
+      ++j;
+    }
+  }
+}
+
 int main(int argc, char* argv[]){
   vector<int> v;
 
@@ -63,7 +79,8 @@ int main(int argc, char* argv[]){
   }
 
   // moveZeroes_brute(v);
-  moveZeroes_Optimal(v);
+  // moveZeroes_Optimal(v);
+  moveZeroes_Optimal_2(v);
 
   for (int i=0; i<size; ++i){
     cout << v[i] << " ";
