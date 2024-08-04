@@ -74,6 +74,20 @@ vector<int> arrayIntersection_optimal(vector<int> &arr1, int n, vector<int> &arr
 	return myIntersection;
 }
 
+vector<int> intersection_unique(vector<int>& nums1, vector<int>& nums2) {
+     unordered_set<int> nums1_set(nums1.begin(), nums1.end());
+     unordered_set<int> myIntersection;
+
+     for ( int it : nums2 ){
+      if (nums1_set.count(it)){
+        // if 'it' is in nums1_set
+        myIntersection.insert(it);
+      }
+     }
+
+     return vector<int>(myIntersection.begin(), myIntersection.end());
+}
+
 
 int main(int argc, char* argv[]){
   vector<int> a;
@@ -97,7 +111,8 @@ int main(int argc, char* argv[]){
 
 
   // vector<int> myIntersection =  arrayIntersection_brute(a, sizeA, b, sizeB);
-  vector<int> myIntersection =  arrayIntersection_optimal(a, sizeA, b, sizeB);
+  // vector<int> myIntersection =  arrayIntersection_optimal(a, sizeA, b, sizeB);
+  vector<int> myIntersection =  intersection_unique(a, b);
 
   for (int i=0; i<myIntersection.size(); ++i){
     cout << myIntersection[i] << " ";
