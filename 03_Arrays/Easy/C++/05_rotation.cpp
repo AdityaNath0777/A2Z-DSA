@@ -190,6 +190,63 @@ void rotateRight_better(vector<int>& nums, int k){
   // total SC -> O(k)
 }
 
+// optimal -> using reversal algo
+void Reverse(vector<int> &nums, int left, int right){
+  while(left < right){
+    int temp = nums[left];
+    nums[left] = nums[right];
+    nums[right] = temp;
+
+    ++left;
+    --right;
+  }
+}
+void rotateRight_optimal(vector<int> &nums, int k){
+  int n = nums.size();
+
+  // arr[] = [ 1 2 3 4 5 6 7 8 ]
+
+  // rev -> last k elements
+  Reverse(nums, n-k, n-1); // TC -> O(N-k)
+  // arr[] = [ 3 2 1 8 7 6 5 4 ]
+
+  // rev -> rest of the elements
+  Reverse(nums, 0, n-k-1); // TC -> O(k)
+  // arr[] = [ 3 2 1 4 5 6 7 8 ]
+
+  // rev -> complete array
+  Reverse(nums, 0, n-1); // TC -> O(N)
+  // arr[] = [ 6 7 8 1 2 3 4 5 ] -> our answer
+
+  // total TC -> O(N)
+  // total SC -> O(1) // since we are not using any extra space
+  // just modifying the array itself using reversal
+}
+
+void rotateLeft_optimal(vector<int> &nums, int k){
+  int n = nums.size();
+
+  // arr[] = [ 1 2 3 4 5 6 7 8 ]
+
+
+  // rev -> first k elements
+  Reverse(nums, 0, k-1); // TC -> O(k)
+  // arr[] = [ 3 2 1 4 5 6 7 8 ]
+
+  // rev -> rest of the elements
+  Reverse(nums, k, n-1); // TC -> O(N-k)
+  // arr[] = [ 3 2 1 8 7 6 5 4 ]
+
+  // rev -> compelete
+  Reverse(nums, 0, n-1); // TC -> O(N)
+  // arr[] = [ 4 5 6 7 8 1 2 3 ] -> our answer
+
+  // total TC -> O(N)
+  // total SC -> O(1) // since we are not using any extra space
+  // just modifying the array itself using reversal
+}
+
+
 int main(int argc, char* argv[]){
   vector<int> v;
 
@@ -213,9 +270,11 @@ int main(int argc, char* argv[]){
 
   // rotateRight(v, k);
   // rotateRight_brute(v, k);
-  rotateRight_better(v, k);
+  // rotateRight_better(v, k);
+  // rotateRight_optimal(v, k);
   // rotateLeft_brute(v, k);
   // rotateLeft_better(v, k);
+  rotateLeft_optimal(v, k);
   // rotateLeft_array(arr, size, k);
 
   for (int i=0; i<size; ++i){
