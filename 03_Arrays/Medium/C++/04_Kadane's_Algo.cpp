@@ -64,6 +64,10 @@ long long maxSubArraySum_optimal(vector<int>& nums){
 
   }
 
+  // if we're asked to consider empty subarray
+  // check whether maxi is -ve and return 0
+  if (maxi < 0) maxi = 0;
+
   return maxi;
 }
 
