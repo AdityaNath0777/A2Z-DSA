@@ -75,6 +75,38 @@ int longestSuccessiveElements_better(vector<int>& nums){
   return longest;
 }
 
+int longestSuccessiveElements_optimal(vector<int>& nums){
+  int n = nums.size();
+
+  if(!n) return 0; 
+
+  unordered_set<int> st;
+  int longest = 1;
+
+  for(auto num : nums){
+    st.insert(num);
+  }
+
+  
+  for(auto it : st){
+    if(st.find(it - 1) == st.end()){
+      // probably 'it' is first element of the sequence
+      int cnt = 1;
+      int num = it;
+
+      // now increase counter (cnt) till we find the last element of the sequence
+      while(st.find(num + 1) != st.end()){
+        cnt++;
+        num++;
+      }
+
+      // store maximum of those sequences
+      longest = max(longest, cnt);
+    }
+  }
+  return longest;
+}
+
 int main(int argc, char* argv[]){
   vector<int> v;
 
@@ -89,7 +121,8 @@ int main(int argc, char* argv[]){
 
   int maxSeqLength;
   // maxSeqLength = longestSuccessiveElements_brute(v);
-  maxSeqLength = longestSuccessiveElements_better(v);
+  // maxSeqLength = longestSuccessiveElements_better(v);
+  maxSeqLength = longestSuccessiveElements_optimal(v);
 
   cout << maxSeqLength << endl;
 return 0;
