@@ -65,7 +65,7 @@ int longestSuccessiveElements_better(vector<int>& nums){
       prev = nums[i];
     }
     else if(nums[i] != prev){
-      cnt = 0;
+      cnt = 1;
       prev = nums[i];
     }
 
