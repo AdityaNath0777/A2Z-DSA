@@ -84,6 +84,10 @@ int main(int argc, char* argv[]){
   // ub = upperBound_brute(v, target);
   ub = upperBound_optimal(v, target);
 
+  // upper bound using STL
+  auto ub1 = upper_bound(v.begin(), v.end(), target);
+  cout << distance(v.begin(), ub1) << "\n\n"; 
+
 
   cout << ub;
 return 0;
