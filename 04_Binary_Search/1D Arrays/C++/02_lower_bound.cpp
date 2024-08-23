@@ -101,6 +101,9 @@ int main(int argc, char* argv[]){
   // lb = lowerBound_my_brute(v, target);
   lb = lowerBound_optimal(v, target);
 
+  // lower bound using STL
+  auto lb1 = lower_bound(v.begin(), v.end(), target);
+  cout << distance(v.begin(), lb1) << "\n\n";
 
   cout << lb;
 return 0;
