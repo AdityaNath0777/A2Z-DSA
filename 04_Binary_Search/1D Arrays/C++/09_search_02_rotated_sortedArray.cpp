@@ -53,7 +53,7 @@ bool searchRotatedDuplcates_optimal(vector<int>& nums, const int &target){
     // if left sorted
     if(nums[low] <= nums[mid]){
       // if might lie in left sorted range
-      if(nums[low] <= target && target <= nums[high]){
+      if(nums[low] <= target && target <= nums[mid]){
         // move left
         high = mid - 1;
       }
@@ -64,7 +64,7 @@ bool searchRotatedDuplcates_optimal(vector<int>& nums, const int &target){
     // if right sorted
     else {
       // if might lie b/w right sorted
-      if(nums[mid + 1] <= target && target <= nums[high]){
+      if(nums[mid] <= target && target <= nums[high]){
         // move right
         low = mid + 1;
       }
