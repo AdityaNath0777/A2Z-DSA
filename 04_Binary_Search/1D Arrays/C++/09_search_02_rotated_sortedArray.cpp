@@ -20,6 +20,9 @@ bool searchRotatedDuplcates_brute(vector<int>& nums, const int &target){
       return true;
   }
 
+  // total TC -> O(N)
+  // total SC -> O(1)
+
   return false;
 }
 
@@ -69,6 +72,11 @@ bool searchRotatedDuplcates_optimal(vector<int>& nums, const int &target){
     }
   }
 
+  // total TC -> avg case -> O(log2(N))
+  //          -> worst case -> O(N/2) 
+                  // -> if low, mid & high almost always point at duplicates of same val
+  
+  // total SC -> O(1)
   return false;
 }
 
