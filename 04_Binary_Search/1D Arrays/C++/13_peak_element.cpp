@@ -51,6 +51,37 @@ int findPeakElement_brute(vector<int>& nums){
   return -1;
 }
 
+// optimal -> using Binary Search
+int findPeakElement_optimal(vector<int>& nums){
+  int n = nums.size();
+
+  if(n==0) return -1;
+
+  if(n == 1) return 0;
+  if(n==2){
+    if(nums[0] > nums[1]) return 0;
+    else return 1;
+  }
+
+  int low = 1;
+  int high= n-2;
+
+  while (low <= high) {
+    int mid = low + (high - low)/2;
+
+    if(nums[mid] > nums[mid + 1] && nums[mid] > nums[mid - 1])
+      return mid;
+
+    if(nums[mid] > nums[mid + 1] && nums[mid] < nums[mid - 1]){
+      high = mid - 1;
+    }
+    else {
+      low = mid + 1;
+    }
+  }
+  return -1;
+}
+
 int main(int argc, char* argv[]){
   vector<int> v;
 
@@ -66,13 +97,11 @@ int main(int argc, char* argv[]){
   int peak_index;
   
   // peak_index = findPeakElement_my_brute(v);
-  peak_index = findPeakElement_brute(v);
+  // peak_index = findPeakElement_brute(v);
+  peak_index = findPeakElement_optimal(v);
 
   if(peak_index == -1) cout << "Not found";
   else cout << v[peak_index];
-
-
-  
 
 return 0;
 }
