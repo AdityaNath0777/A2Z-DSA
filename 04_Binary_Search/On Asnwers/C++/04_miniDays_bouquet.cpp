@@ -97,11 +97,11 @@ int findMiniNoOfDaysRequired_my_brute(vector<int>& nums, const int& m, const int
 }
 
 // brute force
-bool isBouquetPossible(vector<int> nums, const int& day, const int& m, const int& k){
+bool isBouquetPossible(vector<int>& nums, const int& day, const int& m, const int& k){
 
   int cnt = 0;
   int bq = 0;
-  for(int i=0; i<=nums.size(); ++i){
+  for(int i=0; i<nums.size(); ++i){
     if(nums[i] <= day){
       cnt++;
     }
@@ -139,6 +139,34 @@ int findMiniNoOfDaysRequired_brute(vector<int>& nums, const int& m, const int& k
   return -1;
 }
 
+// optimal -> using binary search
+int findMiniNoOfDaysRequired_optimal(vector<int>& nums, const int& m, const int& k){
+  int n = nums.size();
+
+  if(n < m*k) return -1;
+
+  int maxi = INT_MIN;
+  int mini = INT_MAX;
+  for(int i=0; i<n; ++i){
+    maxi = max(maxi, nums[i]);
+    mini = min(mini, nums[i]);
+  }
+
+  int low = mini;
+  int high = maxi;
+
+  while(low <= high){
+    int mid = low + (high - low)/2;
+
+    if(isBouquetPossible(nums, mid, m, k)){
+      high = mid - 1;
+    }
+    else low = mid + 1;
+  }
+
+  return low;
+}
+  
 int main(int argc, char* argv[]){
   vector<int> v;
 
@@ -161,7 +189,8 @@ int main(int argc, char* argv[]){
   int miniNoOfDaysRequired;
 
   // miniNoOfDaysRequired = findMiniNoOfDaysRequired_my_brute(v, noOfBouquets, noOfRosesInABouquet);
-  miniNoOfDaysRequired = findMiniNoOfDaysRequired_brute(v, noOfBouquets, noOfRosesInABouquet);
+  // miniNoOfDaysRequired = findMiniNoOfDaysRequired_brute(v, noOfBouquets, noOfRosesInABouquet);
+  miniNoOfDaysRequired = findMiniNoOfDaysRequired_optimal(v, noOfBouquets, noOfRosesInABouquet);
 
   if(miniNoOfDaysRequired == -1)
     cout << "not possible to make bouquets for the req. amount of roses \nreturning -1";
