@@ -108,7 +108,12 @@ int findLeastCapToShipInDdays_my_optimal(vector<int>& weights, const int& d){
   int low = maxi;
   int high = sum;
   // int ans = -1;
-
+  // using STL to find ax & accumulate
+  /*
+  low = *max_element(weights.begin(), weights.end());
+  // in accumulate, the last arg is initializer, a Starting value to add other values to.
+  high = accumulate(weights.begin(), weights.end(), 0); 
+  */
   while(low <= high){
     int mid = low + (high - low)/2;
 
