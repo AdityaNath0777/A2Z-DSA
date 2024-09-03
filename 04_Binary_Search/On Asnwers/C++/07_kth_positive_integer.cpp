@@ -155,6 +155,9 @@ int find_kth_missing_integer_optimal(vector<int>& nums, int k){
   // return k + high + 1;
   // as the loop ends when low crosses high, 
   //    and they end up adjacent to each other, differing by 1
+
+  // total TC -> O(Log2(N))
+  // total SC -> O(1)
 }
 
 int main(int argc, char* argv[]){
