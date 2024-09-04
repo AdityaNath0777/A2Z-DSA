@@ -87,9 +87,12 @@ int maxMinimumDistance_brute(vector<int>& stalls, int k){
   }
 
   return limit;
+
+  // total TC -> O(Nlog(N)) + O(N * (max(stalls[]) - min(stalls[])) )
+  // total SC -> O(1)
 }
 
-int maxMinimumDistance_optimal(vector<int>& stalls, int k){
+int maxMinimumDistance_optimal(vector<int>& stalls, int k){ 
   int n = stalls.size();
 
   // sort to get mini. dist b/w consecutive stalls
@@ -114,6 +117,8 @@ int maxMinimumDistance_optimal(vector<int>& stalls, int k){
   // cout << high << "\t" << low << endl << endl;
   return high;
 
+  // total TC -> O(Nlog(N)) + O(N * log(max - min of stalls[]) )
+  // total SC -> O(1)
 }
 
 int main(int argc, char* argv[]){
