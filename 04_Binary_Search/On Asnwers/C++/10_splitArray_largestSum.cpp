@@ -32,6 +32,8 @@ int countPartitions(vector<int>& nums, int LargestSum){
     }
   }
 
+  // total TC -> O(N)
+  // total SC -> O(1)
   return subarrayCount;
 }
 
@@ -53,6 +55,9 @@ int largestSubArraySumMinimized_brute(vector<int>& nums, int k){
     if(noOfpartitions <= k)
       return vsum;
   }
+
+  // total TC -> O(N * (sum - max of boards[]))
+  // total SC -> O(1)
   return -1;
 }
 
@@ -77,6 +82,9 @@ int largestSubArraySumMinimized_optimal(vector<int>& nums, int k){
   }
 
   // cout << low << ", " << high << "\n";
+
+  // total TC -> O(N * log2((sum - max of nums[])))
+  // total SC -> O(1)
   return low;
 }
 
