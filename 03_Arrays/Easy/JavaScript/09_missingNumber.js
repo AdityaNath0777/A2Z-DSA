@@ -76,19 +76,32 @@ const missingNumberBetter_usingSort = function (nums) {
    */
 };
 
-const missingNumberOptimal = function (nums) {
+const missingNumberOptimal_sum = function (nums) {
   let arraySum = 0;
+  let actualSum = 0;
   for (let i = 0; i < nums.length; ++i) {
     arraySum += nums[i];
-  }
-
-  let actualSum = 0;
-  for (let i = 0; i <= nums.length; ++i) {
     actualSum += i;
   }
+  
+  actualSum += nums.length;
 
   return actualSum - arraySum;
 };
+
+const missingNumberOptimal_xor = function (nums) {
+  let xor_arr = 0;
+  let xor_num = 0;
+
+  for(let i=0; i<nums.length; ++i) {
+    xor_arr = xor_arr ^ nums[i];
+    xor_num = xor_num ^ i;
+  }
+
+  xor_num = xor_num ^ nums.length;
+
+  return xor_num ^ xor_arr;
+}
 
 let arr = [
   45, 35, 38, 13, 12, 23, 48, 15, 44, 21, 43, 26, 6, 37, 1, 19, 22, 3, 11, 32,
@@ -102,4 +115,5 @@ console.log(
   "Missing number(better using sort): ",
   missingNumberBetter_usingSort(arr)
 );
-console.log("Missing number(optimal): ", missingNumberOptimal(arr));
+console.log("Missing number(optimal sum): ", missingNumberOptimal_sum(arr));
+console.log("Missing number(optimal xor): ", missingNumberOptimal_xor(arr));
