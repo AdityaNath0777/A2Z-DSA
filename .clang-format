@@ -1,0 +1,41 @@
+BasedOnStyle: Google
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never # Always use spaces for indentation
+
+# Braces
+BreakBeforeBraces: Attach # Put opening braces on the same line (e.g., `if (...) {`)
+BreakAfterJavaNamespaceBracket: false # Keep braces compact for namespaces
+
+# Line Wrapping
+ColumnLimit: 100 # Adjust if you prefer longer or shorter lines
+AllowShortFunctionsOnASingleLine: All # Keep small functions on one line
+AllowShortIfStatementsOnASingleLine: true # Allows `if (...) stmt;`
+AllowShortLoopsOnASingleLine: true # Allows `for (...) stmt;`
+AllowShortCaseLabelsOnASingleLine: true
+
+# Pointer and Reference Alignment
+PointerBindsToType: false # `int* x` instead of `int *x`
+ReferenceBindsToType: false # `int& x` instead of `int &x`
+
+# Spacing
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements # Add space before parentheses in control statements (if, for, while, etc.)
+SpacesBeforeTrailingComments: 1 # `int x; // comment`
+SpacesInParentheses: false
+SpacesInAngles: false # No spaces inside angle brackets (e.g., `vector<int>`)
+SpacesInSquareBrackets: false # No spaces inside square brackets (e.g., `arr[i]`)
+
+# Blank Lines
+EmptyLineBeforeAccessModifier: Never # No blank lines before public/private/protected
+KeepEmptyLinesAtTheEndOfFile: false
+MaxEmptyLinesToKeep: 1 # Allow at most one empty line
+BreakBeforeInheritanceSpecifier: Attach
+
+# Other
+BinPackArguments: true # Pack function arguments
+BinPackParameters: true # Pack function parameters
+CompactNamespaces: false # Don't compact namespaces, keep them readable.
+ConstructorInitializerAllOnOneLineOrEachOnItsOwnLine: true
